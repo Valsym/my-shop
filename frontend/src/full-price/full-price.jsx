@@ -3,7 +3,7 @@ import { InnerPrice, PriceWrapper } from "./styled";
 import OldPrice from "/src/old-price/old-price";
 
 function FullPrice({ price, oldPrice, className }) {
-  const showOldPrice = oldPrice && price < oldPrice;
+  const showOldPrice = oldPrice && price < oldPrice && oldPrice > 0;
 
   return (
     <PriceWrapper className={className}>

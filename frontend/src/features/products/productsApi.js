@@ -7,8 +7,19 @@ export const productsApi = createApi({
         getProducts: builder.query({
             // Пагинация
             query: (page = 1) => `products?page=${page}`,
+            // Трансформируем ответ: извлекаем товары и пагинацию
+            transformResponse: (response) => ({
+                items: response.data,                // массив товаров
+                total: response.meta.total,           // всего товаров
+                perPage: response.meta.per_page,      // товаров на странице
+                currentPage: response.meta.current_page, // текущая страница
+                lastPage: response.meta.last_page,    // последняя страница
+                from: response.meta.from,              // первый элемент на странице
+                to: response.meta.to,                   // последний элемент на странице
+            }),
+
             // Извлекаем только массив товаров
-            transformResponse: (response) => response.data,
+            // transformResponse: (response) => response.data,
 
             // query: () => 'products', // полный URL = baseUrl + 'products'
         }),
