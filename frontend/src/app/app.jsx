@@ -5,6 +5,9 @@ import ProductPage from "/src/product-page/product-page";
 import Catalog from "/src/catalog/catalog";
 import Layout from "/src/layout/layout";
 import MainPage from "/src/main-page/main-page";
+import { useGetProductsQuery } from '/src/features/products/productsApi';
+import { useGetMainQuery } from '/src/features/main/mainApi';
+
 
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
@@ -19,6 +22,12 @@ function ProducrOr404({ products }) {
 }
 
 export default function App() {
+  const { data: products, isLoading: productsLoading, error: productsError } = useGetProductsQuery();
+  const { data: mainData, isLoading: mainLoading, error: mainError } = useGetMainQuery();
+
+  if (productsLoading || mainLoading) return <div>Загрузка...</div>;
+  if (productsError || mainError) return <div>Ошибка загрузки</div>;
+/*
   // стало:
   const [products, setProducts] = useState([]);
   const [main, setMainData] = useState(null);
@@ -56,13 +65,13 @@ export default function App() {
   }, []);
 
   if (loading) return <div>Загрузка...</div>;
-
+*/
   // было / осталось
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<MainPage data={main} />} />
+          <Route index element={<MainPage data={mainData} />} />
           <Route path="catalog" element={<Catalog products={products} />} />
           <Route path="product">
             <Route
