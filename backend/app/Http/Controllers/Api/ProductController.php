@@ -24,6 +24,13 @@ class ProductController extends Controller
 //        return response()->json($products);
     }
 
+    public function showByCode($code)
+    {
+        $product = Product::with(['images', 'comments'])
+            ->where('code', $code)->firstOrFail();
+        return new ProductResource($product);
+    }
+
     /**
      * Display the specified resource.
      */

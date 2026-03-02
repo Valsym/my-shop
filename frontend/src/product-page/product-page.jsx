@@ -26,12 +26,16 @@ const MAX_TEXT_SIZE = 200;
 const COMMENTS_COUNT = 3;
 
 function ProductPage({ product, showInfoInAccordion }) {
+  if (!product) return <div>Загрузка...</div>;
+
   const [productCount, setProductCount] = useState(1);
   const [isShowAllDescription, setIsShowAllDescription] = useState(false);
   const [commentsShow, setCommentsShow] = useState(COMMENTS_COUNT);
   const [isShowPopup, setIsShowPopup] = useState(false);
   const price = product.price * productCount;
   const oldPrice = product.oldPrice * productCount;
+  // const description = product?.description ?? '';
+  // const displayText = isShowAllDescription ? description : description.slice(0, MAX_TEXT_SIZE);
 
   const tabs = [
     {
@@ -39,6 +43,7 @@ function ProductPage({ product, showInfoInAccordion }) {
       content: (
         <Description
           text={
+            // displayText
             isShowAllDescription
               ? product.description
               : product.description.slice(0, MAX_TEXT_SIZE)

@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Добавим еще 20 продуктов с фото и комментами:
-        Product::factory()->count(20)->create();
-        Comment::factory()->count(80)->create();
-
-        $this->call([
-            ProductImageSeeder::class,
-        ]);
+//        Product::factory()->count(20)->create();
+//        Comment::factory()->count(80)->create();
+//
+//        $this->call([
+//            ProductImageSeeder::class,
+//        ]);
     }
 }

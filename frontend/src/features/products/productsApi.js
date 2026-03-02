@@ -24,8 +24,11 @@ export const productsApi = createApi({
             // query: () => 'products', // полный URL = baseUrl + 'products'
         }),
         // можно добавить другие endpoints: getProductById, createProduct и т.д.
+        // getProductByCode: builder.query({
+        //     query: (code) => `products/${code}`,
+        // }),
     }),
 });
 
 // Экспортируем хуки для использования в компонентах
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useGetProductByCodeQuery } = productsApi;
