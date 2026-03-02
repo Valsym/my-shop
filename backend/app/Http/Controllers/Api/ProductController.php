@@ -14,11 +14,14 @@ class ProductController extends Controller
      */
     public function index()
     {
+        // с пагинацией
+        return ProductResource::collection(
+            Product::with(['images', 'comments'])->paginate(10));
         //$products = Product::with(['images', 'comments'])->get();
-        $products = ProductResource::collection(
-            Product::with('images', 'comments')->get());
-
-        return response()->json($products);
+//        $products = ProductResource::collection(
+//            Product::with('images', 'comments')->get());
+//
+//        return response()->json($products);
     }
 
     /**

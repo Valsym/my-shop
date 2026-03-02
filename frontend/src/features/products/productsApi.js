@@ -5,7 +5,12 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: '/api/' }), // если используете proxy, оставьте '/api/'
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => 'products', // полный URL = baseUrl + 'products'
+            // Пагинация
+            query: (page = 1) => `products?page=${page}`,
+            // Извлекаем только массив товаров
+            transformResponse: (response) => response.data,
+
+            // query: () => 'products', // полный URL = baseUrl + 'products'
         }),
         // можно добавить другие endpoints: getProductById, createProduct и т.д.
     }),
