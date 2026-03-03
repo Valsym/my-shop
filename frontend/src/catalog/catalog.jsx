@@ -32,6 +32,13 @@ export default function Catalog() {
         if (currentPage < lastPage) setPage(currentPage + 1);
     };
 
+    const productImages = [
+        //'/img/1.png', '/img/2.jpg', '/img/3.jpg',
+        '/img/4.png', '/img/5.png',
+        '/img/6.png', '/img/7.png', '/img/8.png', '/img/9.png', '/img/10.png',
+        '/img/11.png', '/img/12.png',
+    ];
+
 
     return (
     <>
@@ -42,7 +49,7 @@ export default function Catalog() {
           products.map((product) => (
             <ListItem key={product.code}>
               <StyledLink to={`/product/${product.code}`}>
-                <Image src={product.images[0]} />
+                <Image src={product.images[0] ?? productImages[product.code % productImages.length]} />
                 <h2>{product.name}</h2>
                 <span>
                   <FullPrice

@@ -17,19 +17,19 @@ function ProducrOr404() {
 
   if (isLoading) return <div>Загрузка...</div>;
   if (isError || !product) return <h1>404 страница не найдена</h1>;
-  console.log(product);
+  // console.log(product);
 
   return <ProductPage product={product} />;
 }
-function ProducrOr4040({ products }) {
-  const { code } = useParams();
-  const product = products.find((product) => product.code.toString() === code);
-  return product ? (
-    <ProductPage product={product} />
-  ) : (
-    <h1>404 страница не найдена</h1>
-  );
-}
+// function ProducrOr404({ products }) {
+//   const { code } = useParams();
+//   const product = products.find((product) => product.code.toString() === code);
+//   return product ? (
+//     <ProductPage product={product} />
+//   ) : (
+//     <h1>404 страница не найдена</h1>
+//   );
+// }
 
 export default function App() {
   const { data: products, isLoading: productsLoading, error: productsError } = useGetProductsQuery();

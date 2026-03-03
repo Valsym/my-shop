@@ -7,8 +7,9 @@ function FullPrice({ price, oldPrice, className }) {
 
   return (
     <PriceWrapper className={className}>
-      {showOldPrice && <OldPrice value={oldPrice} />}
-      {showOldPrice && " "}
+        {showOldPrice ? <OldPrice value={oldPrice} /> : " "}
+      {/*{showOldPrice && <OldPrice value={oldPrice} />}*/}
+      {/*{showOldPrice && " "}*/}
       <InnerPrice value={price} />
     </PriceWrapper>
   );

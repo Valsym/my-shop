@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         // с пагинацией
         return ProductResource::collection(
-            Product::with(['images', 'comments'])->paginate(10));
+            Product::with(['images', 'comments'])->paginate(3));
         //$products = Product::with(['images', 'comments'])->get();
 //        $products = ProductResource::collection(
 //            Product::with('images', 'comments')->get());
