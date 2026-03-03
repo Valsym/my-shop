@@ -5,9 +5,9 @@ import SwiperCore, { Navigation } from "swiper";
 import { Image } from "/src/elements";
 import { StyledWrapper, StyledButton, StyledSlider } from "./styled";
 
-const placeholderSVG = (text, bgColor = '#ccc', textColor = '#333', width = 200, height = 267) => {
-    return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}' viewBox='0 0 ${width} ${height}'%3E%3Crect width='${width}' height='${height}' fill='${bgColor.replace('#', '%23')}' /%3E%3Ctext x='50%25' y='50%25' font-size='20' text-anchor='middle' dy='.3em' fill='${textColor.replace('#', '%23')}'%3E${encodeURIComponent(text)}%3C/text%3E%3C/svg%3E`;
-};
+// const placeholderSVG = (text, bgColor = '#ccc', textColor = '#333', width = 200, height = 267) => {
+//     return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}' viewBox='0 0 ${width} ${height}'%3E%3Crect width='${width}' height='${height}' fill='${bgColor.replace('#', '%23')}' /%3E%3Ctext x='50%25' y='50%25' font-size='20' text-anchor='middle' dy='.3em' fill='${textColor.replace('#', '%23')}'%3E${encodeURIComponent(text)}%3C/text%3E%3C/svg%3E`;
+// };
 const productImages = [
     //'/img/1.png', '/img/2.jpg', '/img/3.jpg',
     '/img/4.png', '/img/5.png',
@@ -56,9 +56,6 @@ function Slider({ images, code, width= 200, height= 257 }) {
         slidesPerView={1}
         loop
       >
-        {/*{images &&*/}
-        {/*  images.length &&*/}
-        {/*  images.map((image) => (*/}
           {imgs.map((image) => (
             <SwiperSlide key={image}>
               <Image

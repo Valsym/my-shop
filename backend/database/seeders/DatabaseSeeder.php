@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             MainPageSeeder::class,
         ]);
 
-        // Добавим еще 20 продуктов с фото и комментами:
+        // Добавим еще 20 продуктов с (фото и) комментами:
         Product::factory()->count(20)->create();
         Comment::factory()->count(80)->create();
 //

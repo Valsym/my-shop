@@ -16,6 +16,7 @@ class ProductImageSeeder extends Seeder
                 ProductImage::create([
                     'product_id' => $i,
                     'image_url' =>
+                    // не работает
                         'https://source.unsplash.com/random/200x267?sig=' . rand(1, 10000),
                 ]);
             }

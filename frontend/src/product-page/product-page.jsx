@@ -34,13 +34,6 @@ function ProductPage({ product, showInfoInAccordion }) {
   const [isShowPopup, setIsShowPopup] = useState(false);
   const price = product.price * productCount;
   const oldPrice = product.oldPrice * productCount;
-  const productImages = [
-    '/img/1.png', '/img/2.jpg', '/img/3.jpg', '/img/4.png', '/img/5.png',
-    '/img/6.png', '/img/7.png', '/img/8.png', '/img/9.png', '/img/10.png',
-    '/img/11.png', '/img/12.png',
-  ];
-  // const description = product?.description ?? '';
-  // const displayText = isShowAllDescription ? description : description.slice(0, MAX_TEXT_SIZE);
 
   const tabs = [
     {

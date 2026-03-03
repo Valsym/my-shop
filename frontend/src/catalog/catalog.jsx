@@ -7,7 +7,6 @@ import FullPrice from "/src/full-price/full-price";
 import { List, ListItem, StyledLink } from "./styled";
 
 export default function Catalog() {
-// export default function Catalog({ products }) {
     // Состояние для текущей страницы
     const [page, setPage] = useState(1);
 
