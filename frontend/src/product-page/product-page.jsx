@@ -26,6 +26,8 @@ const MAX_TEXT_SIZE = 200;
 const COMMENTS_COUNT = 3;
 
 function ProductPage({ product, showInfoInAccordion }) {
+  if (!product) return <div>Загрузка...</div>;
+
   const [productCount, setProductCount] = useState(1);
   const [isShowAllDescription, setIsShowAllDescription] = useState(false);
   const [commentsShow, setCommentsShow] = useState(COMMENTS_COUNT);
@@ -39,6 +41,7 @@ function ProductPage({ product, showInfoInAccordion }) {
       content: (
         <Description
           text={
+            // displayText
             isShowAllDescription
               ? product.description
               : product.description.slice(0, MAX_TEXT_SIZE)
@@ -60,6 +63,8 @@ function ProductPage({ product, showInfoInAccordion }) {
     }
   ];
 
+  // console.log(product.images);// ?? productImages);
+
   return (
     <StyledProductPage>
       <Header>
@@ -67,7 +72,8 @@ function ProductPage({ product, showInfoInAccordion }) {
         <Code>{product.code}</Code>
       </Header>
       <ProductWrapper>
-        <Slider images={product.images} />
+        <Slider images={product.images}
+                code={product.code}/>
         <ProductInfo>
           <ProductInfoLine>
             Цена: <PageFullPrice oldPrice={oldPrice} price={price} />

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,8 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
@@ -24,7 +24,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             ProductSeeder::class,
-//            FeedSeeder::class,
+            MainPageSeeder::class,
         ]);
+
+        // Добавим еще 20 продуктов с (фото и) комментами:
+        Product::factory()->count(20)->create();
+        Comment::factory()->count(80)->create();
+//
+//        $this->call([
+//            ProductImageSeeder::class,
+//        ]);
     }
 }
