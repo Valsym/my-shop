@@ -28,6 +28,7 @@ class ProductController extends Controller
     {
         $product = Product::with(['images', 'comments'])
             ->where('code', $code)->firstOrFail();
+
         return new ProductResource($product);
     }
 
