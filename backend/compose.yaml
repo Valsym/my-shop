@@ -59,9 +59,24 @@ services:
             - sail
         ports:
             - 8050:80
+    opensearch:
+        image: opensearchproject/opensearch:2.11.0
+        container_name: opensearch
+        environment:
+            - discovery.type=single-node
+            - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
+            - plugins.security.disabled=true   # отключаем SSL/аутентификацию для простоты
+        ports:
+            - "9200:9200"
+        networks:
+            - sail
+        volumes:
+            - opensearch-data:/usr/share/opensearch/data
 networks:
     sail:
         driver: bridge
 volumes:
     sail-mysql:
+        driver: local
+    opensearch-data:
         driver: local

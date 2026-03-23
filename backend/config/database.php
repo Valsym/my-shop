@@ -113,6 +113,20 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'opensearch' => [
+            'driver' => 'opensearch',
+            'hosts' => explode(',', env('OS_HOSTS', 'http://localhost:9200')),
+            'basic_auth' => [
+                'username' => env('OS_USERNAME', ''),
+                'password' => env('OS_PASSWORD', ''),
+            ],
+            'index_prefix' => env('OS_INDEX_PREFIX', false),
+            'options' => [
+                'ssl_verification' => env('OS_OPT_VERIFY_SSL', true),
+                'default_limit' => env('OS_OPT_DEFAULT_LIMIT', 1000),
+            ],
+        ],
+
     ],
 
     /*
