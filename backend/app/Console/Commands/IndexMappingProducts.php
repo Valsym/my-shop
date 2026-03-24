@@ -59,9 +59,18 @@ class IndexMappingProducts extends Command
                             'type' => 'text',
                             'analyzer' => 'partial_analyzer',
                             'search_analyzer' => 'standard'
-                        ]
+                        ],
+                        'code' => [
+                            'type' => 'keyword'   // для точных совпадений
+                        ],
+                        'price' => [
+                            'type' => 'float'
+                        ],
+                        'suggest' => [
+                            'type' => 'completion'
+                        ],
                     ]
-                ]
+                ],
             ]
         ];
 

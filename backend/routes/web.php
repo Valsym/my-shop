@@ -89,3 +89,32 @@ Route::get('/search', function (Request $request, Client $client) {
         'hits' => collect($response['hits']['hits'])->pluck('_source'),
     ]);
 });
+
+Route::get('/suggest', function (Request $request, Client $client) {
+    $prefix = $request->query('q', '');
+    if (strlen($prefix) < 2) {
+        return response()->json([]);
+    }
+
+    $params = [
+        'index' => 'products',
+        'body'  => [
+            'suggest' => [
+                'product-suggest' => [
+                    'prefix' => $prefix,
+                    'completion' => [
+                        'field' => 'suggest',
+                        'size' => 5
+                    ]
+                ]
+            ]
+        ]
+    ];
+
+    $response = $client->search($params);
+    $suggestions = collect($response['suggest']['product-suggest'][0]['options'])
+        ->pluck('text')
+        ->unique();
+
+    return response()->json($suggestions);
+});

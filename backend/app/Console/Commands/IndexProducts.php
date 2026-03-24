@@ -38,6 +38,9 @@ class IndexProducts extends Command
                     'description' => $product->description,
                     'code'        => $product->code,
                     'price'       => $product->price,
+                    'suggest'     => [
+                        'input' => explode(' ', $product->name) // или более сложная логика
+                    ]
                 ]
             ];
             $client->index($params);
